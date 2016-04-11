@@ -11,7 +11,7 @@
 
 void performCppSearch(const char* searchTemplate, const char* searchPath)
 {
-    printf("perform search in cpp for %s in %s\n", searchTemplate, searchPath);
+    printf("C++ printf: performing search in cpp for %s in %s\n", searchTemplate, searchPath);
     
     char name[] = "FoundFileName";
     char path[] = "FoundFilePath";
@@ -19,5 +19,6 @@ void performCppSearch(const char* searchTemplate, const char* searchPath)
     char* pname = &name[0];
     char* ppath = &path[0];
     
+    printf("C++: invoke C method fileFound(...)\n");
     fileFound(pname, ppath);
 }

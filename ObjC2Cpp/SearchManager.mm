@@ -29,12 +29,14 @@
     
     dispatch_queue_t queue1 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue1, ^{
+        NSLog(@"ObjC: invoke C++ method performCppSearch(...)\n");
         performCppSearch(file, path);
     });
 }
 
 void fileFound (char *file, char *path)
 {
+    printf("C printf: fileFound\n");
     NSString *fileStr = [NSString stringWithUTF8String:file];
     NSString *pathStr = [NSString stringWithUTF8String:path];
     [[SearchManager sharedManager] fileFoundObjCWithFile:fileStr andPath:pathStr];
@@ -42,7 +44,7 @@ void fileFound (char *file, char *path)
 
 - (void)fileFoundObjCWithFile:(NSString *)fileName andPath:(NSString *)path
 {
-    NSLog(@"%@", [NSString stringWithFormat:@"file found with name %@ and path %@", path, fileName]);
+    NSLog(@"%@", [NSString stringWithFormat:@"ObjC: file found with name %@ and path %@", path, fileName]);
 
 }
 
